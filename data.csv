@@ -1,0 +1,34 @@
+client,description,start_time,end_time
+ACME,Work on HTML,09:40AM 2023-09-01,11:20AM 2023-09-01
+Brumley,Sketch ideas,11:30AM 2023-09-01,01:00PM 2023-09-01
+Carrom,Brand Identity Meeting,03:00PM 2023-09-01,04:30PM 2023-09-01
+Carrom,Logo Sprint,04:45PM 2023-09-01,05:00PM 2023-09-01
+ACME,Work on CSS,09:00PM 2023-09-01,11:00PM 2023-09-01
+Daigon,Marketing Meeting,11:55PM 2023-09-01,12:25AM 2023-09-02
+Emmerton,Monthly Meeting,06:00AM 2023-09-02,07:00AM 2023-09-02
+Brumley,Onsite inspection,10:00AM 2023-09-02,01:25PM 2023-09-02
+Brumley,Onsite ideation,03:00PM 2023-09-02,05:00PM 2023-09-02
+Carrom,Ideating logos,08:00PM 2023-09-02,09:00PM 2023-09-02
+Daigon,Quick checkin,11:55PM 2023-09-02,12:30AM 2023-09-03
+Daigon,Footage for product push,10:00AM 2023-09-03,01:00PM 2023-09-03
+Emmerton,Onboarding replacement,04:00PM 2023-09-03,06:00PM 2023-09-03
+ACME,Add Javascript,08:00PM 2023-09-03,09:12PM 2023-09-03
+Emmerton,Follow-up questions,09:12PM 2023-09-03,09:36PM 2023-09-03
+ACME,Add Javascript,09:36PM 2023-09-03,10:00PM 2023-09-03
+Daigon,Footage feedback,11:55PM 2023-09-03,12:53AM 2023-09-04
+Daigon,Footage round 2,10:00AM 2023-09-04,11:21AM 2023-09-04
+Carrom,Round of logos,11:30AM 2023-09-04,12:15PM 2023-09-04
+Freuler,Intro meeting,02:00PM 2023-09-04,03:00PM 2023-09-04
+ACME,Finalise static website,03:30PM 2023-09-04,06:00PM 2023-09-04
+Carrom,Branding document,08:00AM 2023-09-07,09:28AM 2023-09-07
+Carrom,Ideate business cards,09:28AM 2023-09-07,10:15AM 2023-09-07
+Daigon,Footage round 3,10:30AM 2023-09-07,11:00AM 2023-09-07
+Freuler,Onsite onboarding,11:30AM 2023-09-07,01:00PM 2023-09-07
+Brumley,Onsite installation,03:00PM 2023-09-07,07:00PM 2023-09-07
+Brumley,Event,07:00PM 2023-09-07,01:30AM 2023-09-08
+Freuler,Test shoot,10:00AM 2023-09-08,11:00AM 2023-09-08
+Freuler,Feedback & Shoot,03:00PM 2023-09-08,06:00PM 2023-09-08
+ACME,Convert to React,09:00PM 2023-09-08,10:30PM 2023-09-08
+ACME,Some more React,08:36AM 2023-09-11,10:00AM 2023-09-11
+Daigon,Cleaning data,10:24AM 2023-09-12,10:25AM 2023-09-12
+ACME,Cleaning the roof,11:35AM 2023-09-11,11:35AM 2023-09-11
