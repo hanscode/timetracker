@@ -1,4 +1,5 @@
 import csv
+import datetime
 
 
 def get_by_client(client):
@@ -56,3 +57,7 @@ def check_if_job_running():
 def back_to_main_menu():
     input("Press any key to return to main menu...")
 
+def get_now_timestamp():
+    now = datetime.datetime.now()
+    format_string = "%I:%M%p %Y-%m-%d"
+    return datetime.datetime.strftime(now, format_string)  # Return the formatted timestamp as a string

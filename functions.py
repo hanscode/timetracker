@@ -10,9 +10,7 @@ def start_tracking(client, description):
     # in the format: HH:MM(AM/PM) YYYY-MM-DD
     # for example: 09:40AM 2023-08-11
 
-    now = datetime.datetime.now()
-    format_string = "%I:%M%p %Y-%m-%d"
-    start_time = datetime.datetime.strftime(now, format_string)
+    start_time = utils.get_now_timestamp()
 
     # Code to append a new job to the CSV
     with open('data.csv', 'a', newline='') as csvfile:
@@ -27,9 +25,7 @@ def stop_tracking():
     # in the format: HH:MM(AM/PM) YYYY-MM-DD
     # for example: 09:40AM 2023-08-11
 
-    now = datetime.datetime.now()
-    format_string = "%I:%M%p %Y-%m-%d"
-    end_time = datetime.datetime.strftime(now, format_string)
+    end_time = utils.get_now_timestamp()
 
     # Code to append a new job to the CSV
     with open('data.csv', 'a') as csvfile:
