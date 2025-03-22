@@ -68,18 +68,18 @@ def display_all_totals(client):
 def display_range_totals(client, dates_str_list):
     print(f"Calculating time spent on jobs for {client} in the specified range...")
     client_jobs = utils.get_by_client(client)
-    # print("Client jobs:")
-    # print(client_jobs)
-    # print("Dates string list:")
-    # print(dates_str_list)
-    
 
     # dates_str_list contains 2 date strings in the format YYYY-MM-DD
     # TODO: turn the two date strings in dates_str_list to datetime objects and store in range_start_dt and range_end_dt
 
     format_string = "%Y-%m-%d"
-    range_start_dt = datetime.datetime.strptime(dates_str_list[0], format_string)
-    range_end_dt = datetime.datetime.strptime(dates_str_list[1], format_string).replace(hour=23, minute=59, second=59)
+    try:
+        range_start_dt = datetime.datetime.strptime(dates_str_list[0], format_string)
+        range_end_dt = datetime.datetime.strptime(dates_str_list[1], format_string).replace(hour=23, minute=59, second=59)
+    except ValueError:
+        # Use format_error(error_message) to display the error message
+        utils.format_error(f"Oops! Invalid date format: '{dates_str_list}'. Expected format is YYYY-MM-DD.")
+        return # Exit the function if the date format is invalid
 
     # TODO: filter client_jobs to only include those within the start and end datetimes
 
@@ -100,7 +100,7 @@ def display_range_totals(client, dates_str_list):
         
     print(f"Total for {client}: {total.hours} hours {total.minutes} minutes")
 
-# 
+
 # TODO: write a function that displays the total time spent on jobs for a client in the last X days
 def display_x_days_totals(client, days):
     print(f"Calculating time spent on jobs for {client} in the last {days} days...")
