@@ -48,9 +48,24 @@ def display_all_totals(client):
     # Follow-up questions - 0 hours 28 minutes
     # TOTAL FOR EMMERTON: 3 hours 28 minutes
 
+    total = relativedelta.relativedelta()
+
+    for job in client_jobs:
+        format_string = "%I:%M%p %Y-%m-%d"
+        start_dt = datetime.datetime.strptime(job['start_time'], format_string)
+        end_dt = datetime.datetime.strptime(job['end_time'], format_string)
+        
+        time_spent = relativedelta.relativedelta(end_dt, start_dt)
+        
+        print(f"{job['description']} - {time_spent.hours} hours {time_spent.minutes} minutes")
+        
+        total += time_spent
+    
+    print(f"TOTAL FOR {client}: {total.hours} hours {total.minutes} minutes")
+
     # references
-    print(client)
-    print(client_jobs)
+    # print(client)
+    # print(client_jobs)
 
 
 def display_range_totals(client, dates_str_list):
