@@ -1,6 +1,6 @@
 import csv
 import datetime
-
+from dateutil import relativedelta
 
 def get_by_client(client):
     all_jobs = read_csv()
@@ -61,3 +61,47 @@ def get_now_timestamp():
     now = datetime.datetime.now()
     format_string = "%I:%M%p %Y-%m-%d"
     return datetime.datetime.strftime(now, format_string)  # Return the formatted timestamp as a string
+
+# Client Data Processing Function: Develop a versatile function that
+# takes a client and a list of client job entries, then calculates and
+# displays relevant data. Challenge yourself to use advanced Python
+# features like list comprehension, filter(), and lambda functions to
+# efficiently filter through client job entries based on specified date
+# ranges. This function should provide valuable insights into client
+# related data, making your Time Tracker app even more powerful and nformative.
+
+def process_client_data(client, client_jobs, range_start_dt=None, range_end_dt=None):
+    
+    format_string_dt = "%I:%M%p %Y-%m-%d"
+    # Filter client jobs based on the provided date range
+    if range_start_dt and range_end_dt:
+        filtered_jobs = list(filter(lambda job: range_start_dt <= datetime.datetime.strptime(job['end_time'], format_string_dt) <= range_end_dt, client_jobs))
+    else:
+        filtered_jobs = client_jobs
+
+    # Calculate total time spent on filtered jobs using list comprehension
+    total_time = sum(
+        (datetime.datetime.strptime(job['end_time'], format_string_dt) - 
+         datetime.datetime.strptime(job['start_time'], format_string_dt)).total_seconds() 
+         for job in filtered_jobs
+    )
+
+    # Convert total time to hours and minutes
+    total_hours = total_time // 3600
+    total_minutes = (total_time % 3600) // 60
+
+    # Display results
+    for job in filtered_jobs:
+        job_start_dt = datetime.datetime.strptime(job['start_time'], format_string_dt)
+        job_end_dt = datetime.datetime.strptime(job['end_time'], format_string_dt)
+        time_spent = relativedelta.relativedelta(job_end_dt, job_start_dt)
+        
+        print(f"{job['description']} - {time_spent.hours} hours {time_spent.minutes} minutes")
+    
+    print(f"Total for {client}: { int(total_hours) } hours { int(total_minutes) } minutes")
+
+# Another alternative to convert total time to hours and minutes: 
+# total_hours, total_minutes = divmod(total_time // 60, 60). 
+# This is a pythonic way to convert total time in seconds to hours and minutes.
+# The divmod() function takes two numbers and returns a tuple of their quotient and remainder.
+# In this case, it divides total_time by 60 to get the total hours and minutes.

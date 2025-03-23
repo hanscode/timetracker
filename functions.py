@@ -44,24 +44,7 @@ def display_all_totals(client):
     # Follow-up questions - 0 hours 28 minutes
     # TOTAL FOR EMMERTON: 3 hours 28 minutes
 
-    total = relativedelta.relativedelta()
-
-    for job in client_jobs:
-        format_string = "%I:%M%p %Y-%m-%d"
-        start_dt = datetime.datetime.strptime(job['start_time'], format_string)
-        end_dt = datetime.datetime.strptime(job['end_time'], format_string)
-        
-        time_spent = relativedelta.relativedelta(end_dt, start_dt)
-        
-        print(f"{job['description']} - {time_spent.hours} hours {time_spent.minutes} minutes")
-        
-        total += time_spent
-    
-    print(f"TOTAL FOR {client}: {total.hours} hours {total.minutes} minutes")
-
-    # references
-    # print(client)
-    # print(client_jobs)
+    utils.process_client_data(client, client_jobs)
 
 
 # TODO: write a function that displays the total time spent on jobs for a client in a date range
@@ -83,22 +66,7 @@ def display_range_totals(client, dates_str_list):
 
     # TODO: filter client_jobs to only include those within the start and end datetimes
 
-    total = relativedelta.relativedelta()
-
-    for job in client_jobs:
-        format_string_dt = "%I:%M%p %Y-%m-%d"
-        job_end_dt = datetime.datetime.strptime(job['end_time'], format_string_dt)
-
-        if range_end_dt > job_end_dt > range_start_dt:
-            job_start_dt = datetime.datetime.strptime(job['start_time'], format_string_dt)
-            time_spent = relativedelta.relativedelta(job_end_dt, job_start_dt)
-
-            #print(time_spent)
-            # TODO: List out all the different jobs, and then a total time spent - just like display_all_totals
-            print(f"{job['description']} - {time_spent.hours} hours {time_spent.minutes} minutes")
-            total += time_spent
-        
-    print(f"Total for {client}: {total.hours} hours {total.minutes} minutes")
+    utils.process_client_data(client, client_jobs, range_start_dt, range_end_dt)
 
 
 # TODO: write a function that displays the total time spent on jobs for a client in the last X days
@@ -112,19 +80,5 @@ def display_x_days_totals(client, days):
     range_end_dt = datetime.datetime.now()
 
     # TODO: filter and display client_jobs to only include those with the start and end datetimes
-    total = relativedelta.relativedelta()
-
-    for job in client_jobs:
-        format_string = "%I:%M%p %Y-%m-%d"
-        job_end_dt = datetime.datetime.strptime(job['end_time'], format_string)
-
-        if range_end_dt > job_end_dt > range_start_dt:
-            job_start_dt = datetime.datetime.strptime(job['start_time'], format_string)
-            time_spent = relativedelta.relativedelta(job_end_dt, job_start_dt)
-
-            #print(time_spent)
-            print(f"{job['description']} - {time_spent.hours} hours {time_spent.minutes} minutes")
-            total += time_spent
-    
-    print(f"Total for {client}: {total.hours} hours {total.minutes} minutes")
+    utils.process_client_data(client, client_jobs, range_start_dt, range_end_dt)
 
